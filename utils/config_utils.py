@@ -12,8 +12,12 @@ class ConfigUtils: #类封装、驼峰式命名法
     def HOSTS(self):
         hosts_value = self.cfg.get('default','hosts') #获取节和key
         return hosts_value  #@property的属性名这里必须有下划线，不然会报错
-#
-local_config = ConfigUtils() #创建对象，测试代码
-if __name__=='__main__':
-    print(local_config.HOSTS)
+    @property
+    def REPORT_PATH(self):
+        report_path_value = self.cfg.get('path','REPORT_PATH')
+        return report_path_value
 
+local_config = ConfigUtils()
+
+if __name__=='__main__':
+    print( local_config.REPORT_PATH )
